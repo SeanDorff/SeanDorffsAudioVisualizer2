@@ -5,6 +5,8 @@ using System;
 
 using UnityEngine;
 
+using AudioListener = Assets.WasAPI.AudioListener;
+
 namespace Asset.WasAPI
 {
     public class WasAPIInterface : MonoBehaviour
@@ -25,10 +27,12 @@ namespace Asset.WasAPI
         private Action<float> receiveSpectrum;
         public Action<float> ReceiveSpectrum { get => receiveSpectrum; set => receiveSpectrum = value; }
 
+        private AudioListener audioListener = new AudioListener();
+
         // Start is called before the first frame update
         void Start()
         {
-
+            audioListener.SetCaptureDevice(captureType);
         }
 
         // Update is called once per frame

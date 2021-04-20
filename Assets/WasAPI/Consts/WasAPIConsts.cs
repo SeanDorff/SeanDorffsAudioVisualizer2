@@ -1,5 +1,4 @@
-﻿
-using CSCore.DSP;
+﻿using CSCore.DSP;
 
 namespace Assets.WasAPI.Consts
 {
