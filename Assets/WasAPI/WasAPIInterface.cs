@@ -9,6 +9,7 @@ using AudioListener = Assets.WasAPI.AudioListener;
 
 namespace Asset.WasAPI
 {
+    [ExecuteInEditMode]
     internal class WasAPIInterface : MonoBehaviour
     {
         [SerializeField]
@@ -26,20 +27,31 @@ namespace Asset.WasAPI
         [SerializeField]
         private Action<float[]> receiveSpectrum;
         internal Action<float[]> ReceiveSpectrum { get => receiveSpectrum; set => receiveSpectrum = value; }
+        [SerializeField]
+        private AAudioReceiver[] audioReceivers;
+        internal AAudioReceiver[] AudioReceivers { get => audioReceivers; set => audioReceivers = value; }
 
         private AudioListener audioListener;
 
         // Start is called before the first frame update
         void Start()
         {
+            receiveSpectrum = new Action<float[]>(spectrumData => DistributeSpectrum(spectrumData));
             audioListener = new AudioListener(spectrumSize, minFrequency, maxFrequency, receiveSpectrum);
             audioListener.SetCaptureDevice(captureType);
+            audioListener.StartListen();
         }
 
         // Update is called once per frame
         void Update()
         {
+            Debug.Log("blabla");
+        }
 
+        private void DistributeSpectrum(float[] spectrum)
+        {
+            foreach (AAudioReceiver audioReciever in AudioReceivers)
+                audioReciever.ReceiveSpectrum(spectrum);
         }
     }
 }

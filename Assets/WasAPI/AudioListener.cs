@@ -76,9 +76,12 @@ namespace Assets.WasAPI
 
         internal void StopListen()
         {
-            if (capture.RecordingState == RecordingState.Recording)
-                capture.Stop();
-            capture.Dispose();
+            if (capture != null)
+            {
+                if (capture.RecordingState == RecordingState.Recording)
+                    capture.Stop();
+                capture.Dispose();
+            }
         }
 
         internal void SetCaptureDevice(ECaptureType captureType)
@@ -88,8 +91,6 @@ namespace Assets.WasAPI
                 this.captureType = captureType;
                 StopListen();
                 SetupWasapiCapture();
-                if (this.captureType != ECaptureType.Undefined)
-                    StartListen();
             }
         }
 
