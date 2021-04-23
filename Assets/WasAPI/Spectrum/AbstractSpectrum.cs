@@ -173,5 +173,4 @@ namespace Assets.WasAPI.Spectrum
             public double Value;
         }
     }
-
 }

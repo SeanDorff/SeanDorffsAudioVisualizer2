@@ -45,7 +45,7 @@ namespace Asset.WasAPI
         // Update is called once per frame
         void Update()
         {
-            Debug.Log("blabla");
+            
         }
 
         private void DistributeSpectrum(float[] spectrum)

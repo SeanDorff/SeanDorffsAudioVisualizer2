@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class AudioReceiver : AAudioReceiver
@@ -6,6 +5,9 @@ public class AudioReceiver : AAudioReceiver
     [SerializeField]
     private GameObject cube;
     internal GameObject Cube { get => cube; set => cube = value; }
+    [SerializeField]
+    private Material material;
+    internal Material Material { get => material; set => material = value; }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,10 @@ public class AudioReceiver : AAudioReceiver
         Vector3 localScale = cube.transform.localScale;
         if (spectrum != null)
             localScale.y = spectrum[0];
+        
         cube.transform.localScale = localScale;
+        Color.RGBToHSV(material.color, out float H, out float S, out float V);
+        H+= Time.deltaTime/36;
+        material.color = Color.HSVToRGB(H, S, V);
     }
 }
