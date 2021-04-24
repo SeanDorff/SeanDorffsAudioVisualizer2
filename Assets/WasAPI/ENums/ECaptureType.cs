@@ -1,6 +1,6 @@
 ﻿namespace Assets.WasAPI.ENums
 {
-    internal enum ECaptureType
+    public enum ECaptureType
     {
         Loopback = 0,
         Microphone = 1,

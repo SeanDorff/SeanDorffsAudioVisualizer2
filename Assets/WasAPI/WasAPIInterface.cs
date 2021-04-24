@@ -2,6 +2,7 @@
 using Assets.WasAPI.ENums;
 
 using System;
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -27,8 +28,7 @@ namespace Asset.WasAPI
         [SerializeField]
         private Action<float[]> receiveSpectrum;
         internal Action<float[]> ReceiveSpectrum { get => receiveSpectrum; set => receiveSpectrum = value; }
-        [SerializeField]
-        private AAudioReceiver[] audioReceivers;
+        private AAudioReceiver[] audioReceivers = new AAudioReceiver[0];
         internal AAudioReceiver[] AudioReceivers { get => audioReceivers; set => audioReceivers = value; }
 
         private AudioListener audioListener;
@@ -40,6 +40,13 @@ namespace Asset.WasAPI
             audioListener = new AudioListener(spectrumSize, minFrequency, maxFrequency, receiveSpectrum);
             audioListener.SetCaptureDevice(captureType);
             audioListener.StartListen();
+        }
+
+        public void AddAudioReceiver(AAudioReceiver audioReceiver)
+        {
+            List<AAudioReceiver> newAudioReceivers = new List<AAudioReceiver>(audioReceivers);
+            newAudioReceivers.Add(audioReceiver);
+            audioReceivers = newAudioReceivers.ToArray();
         }
 
         // Update is called once per frame

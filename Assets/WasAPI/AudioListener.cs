@@ -56,7 +56,7 @@ namespace Assets.WasAPI
             singleBlockNotificationStream = new SingleBlockNotificationStream(sampleSource);
             realtimeSource = singleBlockNotificationStream.ToWaveSource();
 
-            byte[] buffer = new byte[realtimeSource.WaveFormat.BytesPerSecond / 32];
+            byte[] buffer = new byte[realtimeSource.WaveFormat.BytesPerSecond / 128];
 
             soundInSource.DataAvailable += (s, ea) =>
             {

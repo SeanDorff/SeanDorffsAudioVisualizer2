@@ -8,6 +8,7 @@ public class AudioReceiver : AAudioReceiver
     [SerializeField]
     private Material material;
     internal Material Material { get => material; set => material = value; }
+    internal int spectrumPart = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class AudioReceiver : AAudioReceiver
     {
         Vector3 localScale = cube.transform.localScale;
         if (spectrum != null)
-            localScale.y = spectrum[0];
+            localScale.y = spectrum[spectrumPart]*5;
         
         cube.transform.localScale = localScale;
         Color.RGBToHSV(material.color, out float H, out float S, out float V);
