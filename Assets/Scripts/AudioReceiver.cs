@@ -7,12 +7,11 @@ public class AudioReceiver : AAudioReceiver
     internal GameObject Cube { get => cube; set => cube = value; }
     [SerializeField]
     private Material material;
-    internal Material Material { get => material; set => material = value; }
+    internal Material Material { get => material; set => SetMaterial(value); }
     internal int spectrumPart = 0;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -26,5 +25,11 @@ public class AudioReceiver : AAudioReceiver
         Color.RGBToHSV(material.color, out float H, out float S, out float V);
         H+= Time.deltaTime/36;
         material.color = Color.HSVToRGB(H, S, V);
+    }
+
+    private void SetMaterial(Material material)
+    {
+        this.material = material;
+        cube.GetComponent<Renderer>().material =Instantiate<Material>( this.material);
     }
 }
