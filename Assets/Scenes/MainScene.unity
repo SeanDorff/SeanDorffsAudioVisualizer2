@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioListener: {fileID: 731652972}
   CapsulePrefab: {fileID: 6206795199840873933, guid: e9fcbf3e6a18dd14fbfc7860c4f6598c, type: 3}
-  CapsuleInstance: {fileID: 0}
+  SolidColor: {fileID: 2100000, guid: d4f5079253907924b84615578caa16f9, type: 2}
 --- !u!4 &521687224
 Transform:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0f071af2eb8ce43b66f85f3e59afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spectrumSize: 16
+  spectrumSize: 1024
   minFrequency: 20
   maxFrequency: 20000
   captureType: 0
