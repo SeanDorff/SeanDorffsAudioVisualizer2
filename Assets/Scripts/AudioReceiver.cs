@@ -25,9 +25,6 @@ public class AudioReceiver : AAudioReceiver
             localScale.y = spectrum[spectrumPart] * yAmplification;
 
         cube.transform.localScale = localScale;
-        Color.RGBToHSV(material.color, out float H, out float S, out float V);
-        H += Time.deltaTime / 36;
-        material.color = Color.HSVToRGB(H, S, V);
     }
 
     private void SetMaterial(Material material)

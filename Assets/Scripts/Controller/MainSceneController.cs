@@ -63,10 +63,12 @@ public class MainSceneController : MonoBehaviour
                 GameObject instance = Instantiate(ChildCapsulePrefab, Vector3.zero + (-(barCount / 2) + i) * (new Vector3(1, 0, 0)), Quaternion.identity);
                 ChildCapsule childCapsuleScript = instance.GetComponent<ChildCapsule>();
                 childCapsuleScript.Generation = 0;
-                childCapsuleScript.Material = primaryBarInstance[i].GetComponent<AudioReceiver>().Material;
+                SolidColor.color = Color.HSVToRGB(colorStep * i, 1, 1);
+                childCapsuleScript.Material = SolidColor;
                 childCapsuleScript.transform.localScale = primaryBarInstance[i].transform.localScale;
-                childCapsuleScript.MovePerTime = 1;
-                childCapsuleScript.Movement = new Vector3(0, 0, 1);
+                childCapsuleScript.transform.position += new Vector3(0, 0, 1.5f);
+                childCapsuleScript.MovePerTime = 10;
+                childCapsuleScript.Movement = new Vector3(0, 0, 2);
                 childrenInstances.Add(instance);
             }
         }

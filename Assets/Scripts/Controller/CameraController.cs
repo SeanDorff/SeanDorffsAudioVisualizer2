@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     [Min(0.1f)]
-    private float moveSpeed = 5.0f;
+    private float moveSpeed = 15.0f;
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     [SerializeField]
     [Min(0.1f)]
-    private float lookSpeed = 15.0f;
+    private float lookSpeed = 5.0f;
     public float LookSpeed { get => lookSpeed; set => lookSpeed = value; }
 
     private Vector3 moveVector = Vector3.zero;
@@ -41,6 +41,6 @@ public class CameraController : MonoBehaviour
     public void OnLook(InputValue input)
     {
         Vector2 look = input.Get<Vector2>();
-        lookVector = new Vector3(look.y, -look.x, 0);
+        lookVector = new Vector3(-look.y, look.x, 0);
     }
 }

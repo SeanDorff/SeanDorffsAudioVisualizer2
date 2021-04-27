@@ -9,7 +9,7 @@ public class ChildCapsule : MonoBehaviour
     private GameObject capsule;
     public GameObject Capsule { get => capsule; set => capsule = value; }
     private Material material;
-    public Material Material { get => material; set => material = value; }
+    public Material Material { get => material; set => SetMaterial(value); }
     private float yAmplification;
     public float YAmplification { get => yAmplification; set => yAmplification = value; }
     private Vector3 movement;
@@ -26,6 +26,12 @@ public class ChildCapsule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        capsule.transform.position += movement * Time.deltaTime / movePerTime;
+        capsule.transform.position += movement * movePerTime * Time.deltaTime;
+    }
+
+    private void SetMaterial(Material material)
+    {
+        this.material = material;
+        capsule.GetComponent<Renderer>().material = Instantiate<Material>(this.material);
     }
 }

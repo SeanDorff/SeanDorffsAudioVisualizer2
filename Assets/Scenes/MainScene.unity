@@ -338,7 +338,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -502,5 +502,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0535d730b34ac4a852c09e6174a291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 15
   lookSpeed: 5
