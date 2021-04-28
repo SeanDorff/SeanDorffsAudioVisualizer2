@@ -66,7 +66,7 @@ public class MainSceneController : MonoBehaviour
                 SolidColor.color = Color.HSVToRGB(colorStep * i, 1, 1);
                 childCapsuleScript.Material = SolidColor;
                 childCapsuleScript.transform.localScale = primaryBarInstance[i].transform.localScale;
-                childCapsuleScript.transform.position += new Vector3(0, 0, 1.5f);
+                childCapsuleScript.transform.position += new Vector3(0, 0, 2) * 10 * Time.deltaTime;
                 childCapsuleScript.MovePerTime = 10;
                 childCapsuleScript.Movement = new Vector3(0, 0, 2);
                 childrenInstances.Add(instance);
