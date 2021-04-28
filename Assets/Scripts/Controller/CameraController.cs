@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         transform.Rotate(lookVector * lookSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
         transform.position += moveVector * moveSpeed * Time.deltaTime;
     }
 
