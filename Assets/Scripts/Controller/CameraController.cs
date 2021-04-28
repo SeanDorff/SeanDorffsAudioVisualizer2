@@ -30,7 +30,13 @@ public class CameraController : MonoBehaviour
     {
         transform.Rotate(lookVector * lookSpeed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+        if (Keyboard.current.eKey.isPressed)
+            moveVector.y = 1;
+        else if (Keyboard.current.cKey.isPressed)
+            moveVector.y = -1;
+        else moveVector.y = 0;
         transform.position += moveVector * moveSpeed * Time.deltaTime;
+
     }
 
     public void OnMove(InputValue input)
