@@ -32,8 +32,7 @@ public class MainSceneController : MonoBehaviour
             primaryBarInstance.Add(instance);
             AudioReceiver audioReceiver = instance.GetComponent<AudioReceiver>();
             audioReceiver.spectrumPart = i;
-            SolidColor.color = Color.HSVToRGB(colorStep * i, 1, 1);
-            audioReceiver.Material = SolidColor;
+            audioReceiver.Material = getMaterialForStep(i);
             AudioListener.GetComponent<WasAPIInterface>().AddAudioReceiver(audioReceiver);
         }
     }
@@ -63,8 +62,7 @@ public class MainSceneController : MonoBehaviour
                 GameObject instance = Instantiate(ChildCapsulePrefab, Vector3.zero + (-(barCount / 2) + i) * (new Vector3(1, 0, 0)), Quaternion.identity);
                 ChildCapsule childCapsuleScript = instance.GetComponent<ChildCapsule>();
                 childCapsuleScript.Generation = 0;
-                SolidColor.color = Color.HSVToRGB(colorStep * i, 1, 1);
-                childCapsuleScript.Material = SolidColor;
+                childCapsuleScript.Material = getMaterialForStep(i);
                 childCapsuleScript.transform.localScale = primaryBarInstance[i].transform.localScale;
                 childCapsuleScript.transform.position += new Vector3(0, 0, 2) * 10 * Time.deltaTime;
                 childCapsuleScript.MovePerTime = 10;
@@ -74,5 +72,13 @@ public class MainSceneController : MonoBehaviour
         }
 
         lastRealTimeSinceStartup = Time.realtimeSinceStartup;
+    }
+
+    private Material getMaterialForStep(int step)
+    {
+        Material material = new Material(SolidColor);
+        Color color = Color.HSVToRGB(colorStep * step, 1, 1);
+        material.color = new Color(color.r, color.g, color.b, SolidColor.color.a);
+        return material;
     }
 }
